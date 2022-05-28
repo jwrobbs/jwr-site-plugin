@@ -24,7 +24,7 @@
         'query_var'          => true,
         'rewrite'               => array( 'slug' => 'code-snippet', 'with_front' => false ),
         'capability_type'    => 'post',
-        'has_archive'        => true,
+        'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'         => '5.1',
         'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
@@ -106,40 +106,3 @@ add_action('init', 'jwr_register_tutorial_type');
 
 }
 add_action('init', 'jwr_register_reviews_type');
-
-// News
-/*
-function jwr_register_news_type() {
-
-    $labels = array(
-        'name'                  => 'News',
-        'singular_name'         => 'News Item',
-        'menu_name'             => 'News',
-        'name_admin_bar'        => 'News',
-        'add_new'               => 'Add New',
-        'add_new_item'          => 'Add New News Item',
-        'all_items'             => 'All News',
-        'search_items'          => 'Search News',
-    );
-    $args = array(
-        'labels'                 => $labels,
-        'public'             => true,
-        'publicly_queryable' => true,
-        'show_ui'            => true,
-        'show_in_menu'       => true,
-        'query_var'          => true,
-        'rewrite'               => array( 'slug' => 'news' ),
-        'capability_type'    => 'post',
-        'has_archive'        => true,
-        'hierarchical'       => false,
-        'menu_position'         => '5.6',
-        'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
-        'show_in_nav_menus'     => true,
-        'menu_icon'             => 'dashicons-media-text',
-    );
-
-    register_post_type( 'news', $args );
-
-}
-add_action('init', 'jwr_register_news_type');
-*/

@@ -3,7 +3,7 @@
 function jwr_code_fn($atts = array(), $content = null){
     ob_start();
     // start output
-    echo "<pre style='border: 1px solid black; padding: 1rem; line-height: 1;'>";
+    echo "<pre class='jwr-snippet'>";
     echo $content;
     echo "</pre>";
     echo "<textarea>";
