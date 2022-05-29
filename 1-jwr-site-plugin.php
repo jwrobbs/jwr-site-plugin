@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: 1 - JWR site plugin
- * 
+ * Author: Josh Robbs
  */
 
 /*
@@ -16,5 +16,3 @@ include_once(plugin_dir_path( __FILE__ )."php/cpts.php");
 include_once(plugin_dir_path( __FILE__ )."php/taxonomies.php");
 //// 3. Add shortcode
 include_once(plugin_dir_path( __FILE__ )."php/shortcode.php");
-
-
