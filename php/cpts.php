@@ -1,5 +1,5 @@
 <?php
-// Reviews, News, Tutorials, Code Snippets
+// Reviews, Tutorials, Code Snippets
 
  // Code snippet
 
