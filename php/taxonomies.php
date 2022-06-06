@@ -26,7 +26,7 @@ function jwr_custom_taxonomies() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'difficulty' ),
   	));
-
+	/*
 	$labels = array(
     	'name' => 'Functions',
     	'singular_name' => 'Function',
@@ -49,6 +49,10 @@ function jwr_custom_taxonomies() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'functions' ),
   	));
+	*/
+
+
+	
 	  $labels = array(
     	'name' => 'Code topics',
     	'singular_name' => 'Code topic',
