@@ -99,6 +99,23 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 		.pro-con-lists > div {
 			flex: 0 0 50%;
 		}
+		@media all and (max-width: 768px) {
+			.review-details-container {
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.pro-con-lists {
+				flex-wrap: wrap;
+
+			}
+			.review-details-container > div,
+			.pro-con-lists > div {
+				flex: 0 0 100%;
+			}
+			.jwr-review-summary h2, .jwr-review-summary h3, .review-details {
+				text-align: center;
+			}
+		}
 	</style><?php
 	// output
 	echo "<div class='jwr-review-summary'>";
