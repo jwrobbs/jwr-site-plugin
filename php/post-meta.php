@@ -44,13 +44,13 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	}
 	//? add last updated?
 	if($category) {
-		echo "$category";
+		echo "<br />$category";
 	}
 	if($my_tags) {
-		echo "$my_tags";
+		echo "<br />$my_tags";
 	}
 	if($difficulty) {
-		echo "$difficulty<br />";
+		echo "<br />$difficulty<br />";
 	}
 	if($required_plugins) {
 		echo "<hr>";
@@ -63,9 +63,9 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo $plugin_list;
 		echo "<hr>";
 	}
-	if($functions) {
+	/*if($functions) {
 		echo "$functions";
-	}
+	}*/
 	
 	if($code_topics) {
 		echo "$code_topics<br />";
