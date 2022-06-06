@@ -22,7 +22,6 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	$difficulty = get_the_term_list($id,'difficulties', "Difficulty: ",', ');
 	$required_plugins = get_field('required_software');
 	$code_topics = get_the_term_list($id,'code-topic', "Topics: ",', ');
-	$functions = get_the_term_list($id,'function', "Difficulty: ",', ');
 		// these were in an if statement. do i actually need it? Do I save that much time?
 
 
@@ -42,7 +41,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	if($mod_date != $post_date) {
 		echo " (last udpate: $mod_date)";
 	}
-	//? add last updated?
+
 	if($category) {
 		echo "<br />$category";
 	}
@@ -63,9 +62,6 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo $plugin_list;
 		echo "<hr>";
 	}
-	/*if($functions) {
-		echo "$functions";
-	}*/
 	
 	if($code_topics) {
 		echo "$code_topics<br />";
