@@ -26,7 +26,7 @@
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,
-        'menu_position'         => '5.1',
+        'menu_position'         => 4,
         'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
         'show_in_nav_menus'     => true,
         'menu_icon'             => 'dashicons-desktop',
@@ -61,7 +61,7 @@ function jwr_register_tutorial_type() {
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_position'         => '5.3',
+        'menu_position'         => 6,
         'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
         'show_in_nav_menus'     => true,
         'menu_icon'             => 'dashicons-welcome-learn-more',
@@ -92,17 +92,17 @@ add_action('init', 'jwr_register_tutorial_type');
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'               => array( 'slug' => 'review' ),
+           // 'rewrite'               => array( 'slug' => 'review' ),
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,
-            'menu_position'         => '5.2',
+            'menu_position'         => 7,
             'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
             'show_in_nav_menus'     => true,
             'menu_icon'             => 'dashicons-star-half',
         );
 
-        register_post_type( 'reviews', $args );
+        register_post_type( 'review', $args );
 
 }
 add_action('init', 'jwr_register_reviews_type');

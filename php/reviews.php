@@ -1,0 +1,196 @@
+<?php
+/*
+1. Set average review score
+2. Display shortcode for reviews
+*/
+
+//// 1. Set average review score
+//? next version add pricing and advanced schema
+//? also add the subcriteria
+add_action( 'save_post_reviews', 'jwr_set_review_average', 10, 3 );
+ 
+function jwr_set_review_average( $post_id, $post, $update ) {
+
+	// bail out if this is an autosave
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+	$values = get_fields($post_id);
+	$fields_array = array('impact', 'ease_of_use', 'value');
+	foreach($fields_array as $field){
+		$score = $values[$field];
+		if ($score>0){
+			$score_array[]=$score;
+		}
+	}
+	$score_count = count($score_array);
+	if($score_count > 0){
+		$average_score = array_sum($score_array)/$score_count;
+		$average_score = round($average_score,1);
+		update_post_meta( $post_id, 'review_average_score', $average_score );
+	}
+}
+
+//// 2. Display shortcode for reviews
+
+function jwr_review_footer_fn($atts = array(), $content = null){
+    ob_start();
+    // start output
+
+	// gather data
+	$id = get_the_ID(  );
+	$raw_data = get_fields($id);
+	//var_dump($raw_data);
+
+	// data
+	$item_name = $raw_data['item_name']; // required item - will always be present
+	$pub_dateISO = get_the_date( 'Y-m-d', $id );
+	$pub_date = get_the_date( );
+	$mod_dateISO = get_the_modified_date( 'Y-m-d', $id );
+	$mod_date = get_the_modified_date( );
+	$link = $raw_data['link'];
+	$affiliate_link = $raw_data['affiliate_link'];
+
+		//? do i need these? version 2?
+	$impact = $raw_data['impact'];
+	$ease_of_use = $raw_data['ease_of_use'];
+	$value = $raw_data['value'];
+
+	$score = get_post_meta( $id, 'review_average_score', true );
+
+	$review_summary = $raw_data['review_summary'];
+	// style
+	?><style>
+		.jwr-review-summary {
+			border: 1px solid #333;
+			padding: 1.5rem;
+		}
+		.review-details-container {
+			display: flex;
+			justify-content: space-between;
+		}
+		.review-details strong {
+			font-size: 1.3rem;
+		}
+		.jwr-review-summary .review-score {
+			background-color: #333;
+			color: #fff;
+			padding: .75rem;
+			text-align: center;
+		}
+		.jwr-review-summary .review-score .score {
+			
+		}
+		.jwr-review-summary .review-score .score-value {
+			font-size: 2rem;
+		}
+		.review-summary {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 2rem;
+
+			font-style: italic;
+		}
+		.pro-con-lists {
+			display: flex;
+		}
+		.pro-con-lists > div {
+			flex: 0 0 50%;
+		}
+	</style><?php
+	// output
+	echo "<div class='jwr-review-summary'>";
+		echo "<h2>Review Summary</h2>";
+		echo "<div class='review-details-container'>";
+			echo "<div class='review-details'>";
+				if($item_name){
+					echo "<div><strong>$item_name</strong></div>";
+				}else{
+					echo "<div><strong>You really broke something.</strong></div>";
+				}
+				if($pub_date){
+					echo "<div>Published: $pub_date</div>";
+				}
+				if($mod_date){
+					echo "<div>Last updated: $mod_date</div>";
+				}
+				if($link){
+					echo "<div><a href='$link'>Get it</a></div>";
+				}
+				if($affiliate_link){
+					echo "<div><a href='$affiliate_link'>Get it (affiliate link)</a></div>";
+				}
+			echo "</div>";
+			if($score){
+				echo "<div class='review-score'>";
+					echo "<div class='score'><div class='score-header'>Rating:</div><div class='score'><span class='score-value'>$score</span>/5</div></div>";
+				echo "</div>";
+			}
+		echo "</div>";
+		if($review_summary){
+			echo "<div class='review-summary'>";
+				echo $review_summary;
+			echo "</div>";
+		}
+		if(have_rows('pro_list') || have_rows('con_list') ){
+			echo "<div class='pro-con-lists'>";
+				if(have_rows('pro_list')){
+					echo "<div class='pro-list'>";
+						echo "<h3>Pros</h3>";
+						echo "<ul>";
+						while( have_rows('pro_list') ) : the_row();
+							$sub_value = get_sub_field('pro_text');
+							echo "<li>$sub_value</li>";
+						endwhile;
+						echo "</ul>";
+					echo "</div>";
+				}
+				if(have_rows('con_list')){
+					echo "<div class='con-list'>";
+						echo "<h3>Cons</h3>";
+						echo "<ul>";
+						while( have_rows('con_list') ) : the_row();
+							$sub_value = get_sub_field('con_text');
+							echo "<li>$sub_value</li>";
+						endwhile;
+						echo "</ul>";
+					echo "</div>";
+				}
+			echo "</div>";
+		}
+	echo "</div>";
+	// json
+	// <?php echo $adssdf; 
+	?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "<?php echo $item_name; ?>",
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+	  "datePublished": "<?php echo $pub_dateISO; ?>",
+      "ratingValue": "<?php echo $score; ?>"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Josh Robbs"
+    },
+    "reviewBody": "<?php echo $review_summary; ?>"
+  }
+}
+</script>
+
+
+<?php
+    //return output
+    wp_reset_postdata();
+    $thisOutput = ob_get_clean();
+    return $thisOutput;
+}
+    
+add_shortcode( 'jwr-review-footer' , 'jwr_review_footer_fn' );
