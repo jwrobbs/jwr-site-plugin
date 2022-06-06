@@ -27,7 +27,7 @@
         'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'         => 4,
-        'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+        'supports'              => array( 'title', 'author', 'excerpt' ),
         'show_in_nav_menus'     => true,
         'menu_icon'             => 'dashicons-desktop',
     );
