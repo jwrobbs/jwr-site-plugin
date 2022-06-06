@@ -64,7 +64,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	}
 	
 	if($code_topics) {
-		echo "$code_topics<br />";
+		echo "<br />$code_topics";
 	}
 	echo "</div>";
     //return output
