@@ -56,7 +56,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo "Required plugins:<br />";
 		foreach($required_plugins as $plugin){
 			$link = get_permalink($plugin->ID);
-			$plugin_list_array[] = "<a href='$link->'>$plugin->post_title</a>";
+			$plugin_list_array[] = "<a href='$link'>$plugin->post_title</a>";
 		}
 		$plugin_list = implode(", ",$plugin_list_array);
 		echo $plugin_list;
