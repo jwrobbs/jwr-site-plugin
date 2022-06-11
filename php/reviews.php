@@ -70,7 +70,8 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 		}
 		.review-details-container {
 			display: flex;
-			justify-content: space-between;
+			/*justify-content: space-between;*/
+			justify-content: space-evenly;
 		}
 		.review-details strong {
 			font-size: 1.3rem;
@@ -92,7 +93,6 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: 2rem;
-
 			font-style: italic;
 		}
 		.pro-con-lists {
@@ -100,6 +100,22 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 		}
 		.pro-con-lists > div {
 			flex: 0 0 50%;
+		}
+		.jwr-review-summary .review-button:hover {
+			text-decoration: none;
+		}
+		.jwr-review-summary .review-button button{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			border-color: #002244;
+			background-color: #002244;
+			color: #fff;
+		}
+		.jwr-review-summary .review-button button:hover{
+			text-decoration: none !important;
+			background-color: transparent;
+			color: #333;
 		}
 		@media all and (max-width: 768px) {
 			.review-details-container {
@@ -169,8 +185,7 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 							echo "Value: $value";
 						echo "</div>";
 					}
-						
-						
+		
 					echo "</div>";
 				echo "</div>";
 			}
@@ -211,6 +226,12 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 					echo "</div>";
 				}
 			echo "</div>";
+		}
+		// add final button
+		if( ($link || $affiliate_link) && $score > 3.5 ){
+			$button_link = $affiliate_link ? $affiliate_link : $link;
+
+			?><a class='review-button' href='<?php echo $button_link; ?>' target='_blank'><button class='' type='button'>Get <?php echo $item_name; ?></button></a><?php
 		}
 	echo "</div>";
 	// json
