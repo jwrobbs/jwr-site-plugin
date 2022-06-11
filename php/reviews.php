@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /*
 1. Set average review score
 2. Display shortcode for reviews
@@ -52,7 +54,7 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 	$link = $raw_data['link'];
 	$affiliate_link = $raw_data['affiliate_link'];
 
-		//? do i need these? version 2?
+		
 	$impact = $raw_data['impact'];
 	$ease_of_use = $raw_data['ease_of_use'];
 	$value = $raw_data['value'];
@@ -119,14 +121,22 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 	</style><?php
 	// output
 	echo "<div class='jwr-review-summary'>";
-		echo "<h2>Review Summary</h2>";
+		echo "<h2>Review Summary:<br />";
+		if($item_name){
+			echo "$item_name";
+		}else{
+			echo "<em>You really broke something.</em>";
+		}
+		echo "</h2>";
 		echo "<div class='review-details-container'>";
 			echo "<div class='review-details'>";
-				if($item_name){
-					echo "<div><strong>$item_name</strong></div>";
-				}else{
-					echo "<div><strong>You really broke something.</strong></div>";
-				}
+			/* Moved into header
+			x	if($item_name){
+			x		echo "<div><strong>$item_name</strong></div>";
+			x	}else{
+			x		echo "<div><strong>You really broke something.</strong></div>";
+			x	}
+			*/
 				if($pub_date){
 					echo "<div>Published: $pub_date</div>";
 				}
@@ -140,6 +150,31 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 					echo "<div><a href='$affiliate_link'>Get it (affiliate link)</a></div>";
 				}
 			echo "</div>";
+			
+			if( $impact || $ease_of_use || $value ){
+				echo "<div class='score-breakdown'>";
+					echo "<div class='score-breakdown-inner'>";
+					if( $impact ){
+						echo "<div class='individual-score score-impact'>";
+							echo "Impact: $impact";
+						echo "</div>";
+					}
+					if( $ease_of_use ){
+						echo "<div class='individual-score score-ease-of-use'>";
+							echo "Ease of use: $ease_of_use";
+						echo "</div>";
+					}
+					if( $value ){
+						echo "<div class='individual-score score-value'>";
+							echo "Value: $value";
+						echo "</div>";
+					}
+						
+						
+					echo "</div>";
+				echo "</div>";
+			}
+			
 			if($score){
 				echo "<div class='review-score'>";
 					echo "<div class='score'><div class='score-header'>Rating:</div><div class='score'><span class='score-value'>$score</span>/5</div></div>";
