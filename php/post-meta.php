@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 function jwr_post_meta_fn($atts = array(), $content = null){
     ob_start();
     // start output

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Plugin Name: 1 - JWR site plugin
  * Author: Josh Robbs

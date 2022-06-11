@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 add_action( 'init', 'jwr_custom_taxonomies', 0 );
  
 function jwr_custom_taxonomies() {

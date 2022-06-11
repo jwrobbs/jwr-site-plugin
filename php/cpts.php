@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 // Reviews, Tutorials, Code Snippets
 
  // Code snippet
