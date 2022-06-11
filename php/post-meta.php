@@ -39,7 +39,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	echo " on $post_date";
 	$mod_date = get_the_modified_date('F j, Y');
 	if($mod_date != $post_date) {
-		echo " (last udpate: $mod_date)";
+		echo " (last update: $mod_date)";
 	}
 
 	if($category) {
