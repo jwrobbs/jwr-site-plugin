@@ -60,11 +60,10 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		}
 		$plugin_list = implode(", ",$plugin_list_array);
 		echo $plugin_list;
-		echo "<hr>";
 	}
 	
 	if($code_topics) {
-		echo "<br />$code_topics";
+		echo "<hr><div>$code_topics</div>";
 	}
 	echo "</div>";
     //return output
