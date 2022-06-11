@@ -68,10 +68,14 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 			border: 1px solid #333;
 			padding: 1.5rem;
 		}
+		.jwr-review-summary h2 {
+			margin: 0;
+		}
 		.review-details-container {
 			display: flex;
 			/*justify-content: space-between;*/
 			justify-content: space-evenly;
+			padding: .5rem;
 		}
 		.review-details strong {
 			font-size: 1.3rem;
@@ -137,13 +141,12 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 	</style><?php
 	// output
 	echo "<div class='jwr-review-summary'>";
-		echo "<h2>Review Summary:<br />";
+		echo "<h2>Review Summary</h2>";
 		if($item_name){
-			echo "$item_name";
+			echo "<div><strong>$item_name</strong></div>";
 		}else{
-			echo "<em>You really broke something.</em>";
+			echo "<div><em>You really broke something.</em></div>";
 		}
-		echo "</h2>";
 		echo "<div class='review-details-container'>";
 			echo "<div class='review-details'>";
 			/* Moved into header
