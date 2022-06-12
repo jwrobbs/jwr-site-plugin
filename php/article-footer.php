@@ -19,7 +19,8 @@ function jwr_article_footer_fn($atts = array(), $content = null){
 	}elseif( 'review' == $post_type){ // review
 		echo do_shortcode( '[jwr-review-footer]' );
 	}elseif( 'snippet' == $post_type){ // code
-		echo "$post_type <br />";
+		echo "<h2>The Code</h2>";
+		echo jwr_get_snippet_footer(); // this will need updating for other languages
 	}else{
 		echo "No post type match for '$post_type'";
 	}
