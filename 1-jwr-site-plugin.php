@@ -27,3 +27,5 @@ include_once(plugin_dir_path( __FILE__ )."php/post-meta.php");
 include_once(plugin_dir_path( __FILE__ )."php/reviews.php");
 //// 5. Add article footer
 include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
+//// 6. Add snippet footer
+include_once(plugin_dir_path( __FILE__ )."php/snippet-footer.php");
