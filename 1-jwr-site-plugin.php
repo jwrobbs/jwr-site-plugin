@@ -24,3 +24,5 @@ include_once(plugin_dir_path( __FILE__ )."php/shortcode.php");
 include_once(plugin_dir_path( __FILE__ )."php/post-meta.php");
 //// 4. Add functions for review
 include_once(plugin_dir_path( __FILE__ )."php/reviews.php");
+//// 5. Add article footer 
+include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
