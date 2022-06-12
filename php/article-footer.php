@@ -15,7 +15,7 @@ function jwr_article_footer_fn($atts = array(), $content = null){
 		wp_reset_postdata();
 		return;
 	}elseif( 'tutorial' == $post_type){ // tutorial
-		echo "$post_type <br />";
+		// no footer?
 	}elseif( 'review' == $post_type){ // review
 		echo do_shortcode( '[jwr-review-footer]' );
 	}elseif( 'snippet' == $post_type){ // code
