@@ -8,31 +8,21 @@ function jwr_article_footer_fn($atts = array(), $content = null){
 
 	$post_type = get_post_type(  );
 
-	// return on post
 	
-	if( 'post' == $post_type){
+	
+	if( 'post' == $post_type){ // return on post
 		ob_end_clean();
 		wp_reset_postdata();
 		return;
+	}elseif( 'tutorial' == $post_type){ // return on tutorial
+		echo "$post_type <br />";
+	}elseif( 'review' == $post_type){ // return on review
+		echo do_shortcode( '[jwr-review-footer]' );
+	}elseif( 'snippet' == $post_type){ // return on code
+		echo "$post_type <br />";
+	}else{
+		echo "No post type match: $post_type";
 	}
-
-	//echo "<h3>footer test</h3>";
-	// get post type
-	
-	echo $post_type;
-
-	// return on post
-	/*
-	if( 'post' == $post_type){
-		ob_end_clean;
-		return "test 2";
-	}*/
-	
-	// return on tutorial
-
-	// return on review
-
-	// return on code
 
 
 

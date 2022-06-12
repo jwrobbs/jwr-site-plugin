@@ -239,7 +239,7 @@ function jwr_review_footer_fn($atts = array(), $content = null){
 	echo "</div>";
 	// json
 	// <?php echo $adssdf; 
-	?>
+	/*
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -260,9 +260,8 @@ function jwr_review_footer_fn($atts = array(), $content = null){
   }
 }
 </script>
+*/
 
-
-<?php
     //return output
     wp_reset_postdata();
     $thisOutput = ob_get_clean();
