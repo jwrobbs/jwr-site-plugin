@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 3. Add meta block for single posts
 4. Add functions for review
 5. Add article footer
+6. Add snippet footer
 */
 
 //// 1. Create post types
