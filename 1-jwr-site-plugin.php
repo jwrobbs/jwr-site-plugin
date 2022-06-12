@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 2. Add shortcode
 3. Add meta block for single posts
 4. Add functions for review
+5. Add article footer
 */
 
 //// 1. Create post types
@@ -24,5 +25,5 @@ include_once(plugin_dir_path( __FILE__ )."php/shortcode.php");
 include_once(plugin_dir_path( __FILE__ )."php/post-meta.php");
 //// 4. Add functions for review
 include_once(plugin_dir_path( __FILE__ )."php/reviews.php");
-//// 5. Add article footer 
+//// 5. Add article footer
 include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
