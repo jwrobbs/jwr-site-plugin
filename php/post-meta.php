@@ -1,5 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+
 function jwr_post_meta_fn($atts = array(), $content = null){
     ob_start();
     // start output
@@ -7,6 +9,11 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	// get post data
 	$id = get_the_ID();
 	$post_type = get_post_type($id);
+	if( $post_type ){
+		$link = get_post_type_archive_link( $post_type );
+		$post_type = "<a href='$link'>$post_type</a>";
+	}
+
 	// get relevant data
 	// author, date, category, tag, 
 
@@ -15,6 +22,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	$author_link = get_author_posts_url($author_id);
 
 	$post_date = get_the_date('F j, Y');
+	$mod_date = get_the_modified_date('F j, Y');
 
 	$category = get_the_term_list($id,'category', "Filed under: ",', ');
 	$my_tags = get_the_term_list($id,'post_tag', "Topics: ",', ');
@@ -23,7 +31,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	$required_plugins = get_field('required_software');
 	$related_code_snippets = get_field('related_code_snippets');
 	$code_topics = get_the_term_list($id,'code-topic', "Topics: ",', ');
-		// these were in an if statement. do i actually need it? Do I save that much time?
+	$review_categories = get_the_term_list($id,'review-category', "Group: ",', ');
 
 
 	// display data with style
@@ -41,45 +49,54 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	echo "This $post_type was";
 	echo " published by <a href='$author_link'>$author</a>";
 	echo " on $post_date";
-	$mod_date = get_the_modified_date('F j, Y');
 	if($mod_date != $post_date) {
 		echo " (last update: $mod_date)";
 	}
 
+	if( $category || $my_tags ){
+		echo "<hr>";
+	}
 	if($category) {
-		echo "<br />$category";
+		echo "<div>$category</div>";
 	}
 	if($my_tags) {
-		echo "<br />$my_tags";
+		echo "<div>$my_tags</div>";
 	}
+
 	if($difficulty) {
 		echo "<hr>";
-		echo "$difficulty";
+		echo "<div>$difficulty</div>";
 	}
+
 	if($required_plugins) {
 		echo "<hr>";
-		echo "Required plugins:<br />";
+		echo "<div>Required plugins:<br />";
 		foreach($required_plugins as $plugin){
 			$link = get_permalink($plugin->ID);
 			$plugin_list_array[] = "<a href='$link'>$plugin->post_title</a>";
 		}
 		$plugin_list = implode(", ",$plugin_list_array);
-		echo $plugin_list;
+		echo $plugin_list."</div>";
 	}
+
 	if($related_code_snippets) {
 		echo "<hr>";
-		echo "Related code snippets:<br />";
+		echo "<div>Related code snippets:<br />";
 		foreach($related_code_snippets as $snippet){
 			$link = get_permalink($snippet->ID);
 			$snippet_list_array[] = "<a href='$link'>$snippet->post_title</a>";
 		}
 		$snippet_list = implode(", ",$snippet_list_array);
-		echo $snippet_list;
+		echo $snippet_list."</div>";
 	}
 	
 	if($code_topics) {
 		echo "<hr><div>$code_topics</div>";
 	}
+	if( $review_categories ){
+		echo "<hr><div>$review_categories</div>";
+	}
+
 	echo "</div>";
     //return output
     wp_reset_postdata();
