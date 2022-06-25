@@ -32,4 +32,4 @@ include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
 //// 6. Add snippet footer
 include_once(plugin_dir_path( __FILE__ )."php/snippet-footer.php");
 //// 7. Add Ele Custom Themes variables
-include_once(plugin_dir_path( __FILE__ )."php/custom-ECT-variables.php");
+include_once(plugin_dir_path( __FILE__ )."php/custom-ECS-variables.php");
