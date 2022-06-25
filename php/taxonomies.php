@@ -77,6 +77,33 @@ function jwr_custom_taxonomies() {
 		'rewrite' => array( 'slug' => 'code-topics' ),
   	));
 
+	// Review category
+
+	$labels = array(
+    	'name' => 'Review categories',
+    	'singular_name' => 'Review category',
+    	'search_items' =>  'Search Review categories',
+    	'all_items' => 'All Review categories',
+    	'edit_item' => __( 'Edit Review category' ), 
+    	'update_item' => __( 'Update Review category' ),
+    	'add_new_item' => __( 'Add New Review category' ),
+    	'new_item_name' => __( 'New Review category' ),
+    	'menu_name' => __( 'Review categories' ),
+  	);    
+ 
+// Now register the taxonomy
+  	register_taxonomy('review-category',array('review'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'review-category' ),
+  	));
+
+
+
 
  
 }
