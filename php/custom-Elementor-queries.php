@@ -16,7 +16,6 @@ add_action( 'elementor/query/<the query ID>', function( $query ) {
 	This solution found originally at https://www.scratchcode.io/add-multiple-post-types-in-posts-widget-in-elementor/
 */
 
-*/
 add_action( 'elementor/query/all_posts', function( $query ) {
     $query->set( 'post_type', [ 'post', 'review', 'tutorial', 'review','code-snippet' ] ); 
 	$query->set('post_status ','publish');
