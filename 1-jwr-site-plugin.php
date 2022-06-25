@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 4. Add functions for review
 5. Add article footer
 6. Add snippet footer
+7. Add Ele Custom Themes variables
 */
 
 //// 1. Create post types
@@ -30,3 +31,5 @@ include_once(plugin_dir_path( __FILE__ )."php/reviews.php");
 include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
 //// 6. Add snippet footer
 include_once(plugin_dir_path( __FILE__ )."php/snippet-footer.php");
+//// 7. Add Ele Custom Themes variables
+include_once(plugin_dir_path( __FILE__ )."php/custom-ECT-variables.php");
