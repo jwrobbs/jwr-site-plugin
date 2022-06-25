@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         'query_var'          => true,
         'rewrite'               => array( 'slug' => 'code-snippet', 'with_front' => false ),
         'capability_type'    => 'post',
-        'has_archive'        => false,
+        'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'         => 4,
         'supports'              => array( 'title', 'author', 'excerpt' ),
