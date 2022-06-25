@@ -50,7 +50,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	echo " published by <a href='$author_link'>$author</a>";
 	echo " on $post_date";
 	if($mod_date != $post_date) {
-		echo " (last update: $mod_date)";
+		echo "<br>updated: $mod_date";
 	}
 
 	if( $category || $my_tags ){
