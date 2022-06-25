@@ -68,7 +68,7 @@ function jwr_register_tutorial_type() {
         'menu_icon'             => 'dashicons-welcome-learn-more',
     );
 
-    register_post_type( 'tutorital', $args );
+    register_post_type( 'tutorial', $args );
 
 }
 add_action('init', 'jwr_register_tutorial_type');
