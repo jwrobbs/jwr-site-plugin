@@ -68,6 +68,10 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo "<div>$difficulty</div>";
 	}
 
+	if($code_topics) {
+		echo "<hr><div>$code_topics</div>";
+	}
+
 	if($required_plugins) {
 		echo "<hr>";
 		echo "<div>Required plugins:<br />";
@@ -90,9 +94,6 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo $snippet_list."</div>";
 	}
 	
-	if($code_topics) {
-		echo "<hr><div>$code_topics</div>";
-	}
 	if( $review_categories ){
 		echo "<hr><div>$review_categories</div>";
 	}
