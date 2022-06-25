@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 include_once(plugin_dir_path( __FILE__ )."php/cpts.php");
 	//// 1.1 Create taxonomies
 	include_once(plugin_dir_path( __FILE__ )."php/taxonomies.php");
+
 //// 2. Add shortcode
 include_once(plugin_dir_path( __FILE__ )."php/shortcode.php");
 //// 3. Add meta block for single posts
