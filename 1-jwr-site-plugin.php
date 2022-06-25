@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 5. Add article footer
 6. Add snippet footer
 7. Add Ele Custom Themes variables
+8. Custom queries for Elementor
 */
 
 //// 1. Create post types
@@ -33,3 +34,5 @@ include_once(plugin_dir_path( __FILE__ )."php/article-footer.php");
 include_once(plugin_dir_path( __FILE__ )."php/snippet-footer.php");
 //// 7. Add Ele Custom Themes variables
 include_once(plugin_dir_path( __FILE__ )."php/custom-ECS-variables.php");
+//// 8. Custom queries for Elementor
+include_once(plugin_dir_path( __FILE__ )."php/custom-Elementor-queries.php");
