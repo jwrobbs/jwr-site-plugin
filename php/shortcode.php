@@ -28,11 +28,12 @@ function jwr_home_cpt_links_fn($atts = array(), $content = null){
     foreach( $cpt_array as $cpt ){
         // get proper name and url
         $cpt_obj = get_post_type_object($cpt);
+        $link = get_post_type_archive_link($cpt);
         
         //output
         $label = $cpt_obj->label;
         if( $label ){
-            echo "<a href='$cpt'>$label</a><br>";
+            echo "<a href='$link'>$label</a><br>";
         }
     }
 
