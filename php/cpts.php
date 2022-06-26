@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         'menu_icon'             => 'dashicons-desktop',
     );
 
-    register_post_type( 'snippet', $args );
+    register_post_type( 'code-snippet', $args );
 
 }
 add_action('init', 'jwr_register_snippet_type');
