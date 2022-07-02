@@ -52,7 +52,7 @@ add_filter( 'ecs_vars', function ( $custom_vars ) {
 				$output = "$post_type";
 		}
 
-		$custom_vars['jwr_post_details'] = " ($output)";
+		$custom_vars['jwr_post_details'] = "$output";
 	}
 
 
