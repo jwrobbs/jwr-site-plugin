@@ -7,10 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 
 //// 1. Set average review score
-//? next version add pricing and advanced schema
 //? also add the subcriteria
+
+
 add_action( 'save_post_reviews', 'jwr_set_review_average', 10, 3 );
- 
+ /**
+  * Averages values of $fields_array and saves it as reivew_average_score on save_post_reviews
+  *
+  * @return void
+  */
 function jwr_set_review_average( $post_id, $post, $update ) {
 
 	// bail out if this is an autosave
@@ -35,7 +40,13 @@ function jwr_set_review_average( $post_id, $post, $update ) {
 }
 
 //// 2. Display shortcode for reviews
+//? next version add pricing and advanced schema
 
+/**
+ * Displays the review's custom data
+ *
+ * @return string
+ */
 function jwr_review_footer_fn($atts = array(), $content = null){
     ob_start();
     // start output
