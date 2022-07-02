@@ -1,7 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
+/**
+ * Adds meta data to single posts (shortcode)
+ * Post types depend on template assignment
+ *
+ * @return string
+ */
 function jwr_post_meta_fn($atts = array(), $content = null){
     ob_start();
     // start output
@@ -15,7 +20,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	}
 
 	// get relevant data
-	// author, date, category, tag, 
+	// author, dates, category, tag, special items
 
 	$author = get_the_author_meta('nickname');
 	$author_id = get_the_author_meta('ID');
