@@ -38,7 +38,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	$required_plugins = get_field('required_software');
 	$related_code_snippets = get_field('related_code_snippets');
 	$code_topics = get_the_term_list($id,'code-topic', "Topics: ",', ');
-	$review_categories = get_the_term_list($id,'review-category', "Group: ",', ');
+	$review_categories = get_the_term_list($id,'review-category', "Groups: ",', ');
 
 
 	// display data with style
@@ -50,12 +50,18 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		.custom-meta hr {
 			margin: 1rem 0;
 		}
+
+		@media all and (max-width: 767px){
+			.custom-meta {
+				text-align: center;
+			}
+		}
 	</style>
 	<?php
 	echo "<div class='custom-meta'>";
 	echo "This $post_type was";
 	echo " published by <a href='$author_link'>$author</a>";
-	echo " on $post_date";
+	echo "<br />on $post_date";
 	if($mod_date != $post_date) {
 		echo "<br>updated: $mod_date";
 	}
