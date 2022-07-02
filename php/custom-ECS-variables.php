@@ -30,11 +30,6 @@ add_filter( 'ecs_vars', function ( $custom_vars ) {
 			case 'tutorial':
 				$difficulties = get_the_terms($id,'difficulties');
 				$difficulty = $difficulties[0]->name;
-				if( $difficulty == "Apprentice"){
-					$article = "an";
-				}else {
-					$article = "a";
-				}
 				$output = "$difficulty tutorial";
 				break;
 			case 'review':
@@ -64,11 +59,6 @@ add_filter( 'ecs_vars', function ( $custom_vars ) {
 			case 'tutorial':
 				$difficulties = get_the_terms($id,'difficulties');
 				$difficulty = $difficulties[0]->name;
-				if( $difficulty == "Apprentice"){
-					$article = "an";
-				}else {
-					$article = "a";
-				}
 				$output = "$difficulty tutorial";
 				break;
 			case 'review':
