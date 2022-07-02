@@ -1,12 +1,23 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_filter( 'ecs_vars', function ( $custom_vars) {
+/**
+ * Creates custom variables for custom skins for Ele Custom Skins
+ *
+ * Skins can be used in the loop by Elementor
+ * Requires Elementor
+ * 
+ * This is similar to shortcodes. I don't know the difference.
+ *  
+ * Filter must return $custom_vars
+ * 
+ * Format:
+		$custom_vars['name'] = $output;
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
+ */
+add_filter( 'ecs_vars', function ( $custom_vars ) {
 
-	/*
-	 Format
-		$custom_vars['VARIABLE TO ADD'] = OUTPUT;
-	*/
 
 	//? can this be dynamic? Does it know the page data?
 

@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * 
  * Adds shortcodes to the site
  * 
+ * @author  Josh Robbs <josh@joshrobbs.com> 
  */
-
 
 
  /**

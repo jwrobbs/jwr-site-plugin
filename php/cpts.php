@@ -1,9 +1,19 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+
 // Reviews, Tutorials, Code Snippets
 
  // Code snippet
-
+/**
+ * Creates custom post type
+ * 
+ * They're in separate functions because of copy/paste 
+ * 
+ * @return void
+ * 
+ * @author  Josh Robbs <josh@joshrobbs.com>
+ */
  function jwr_register_snippet_type() {
 
     $labels = array(

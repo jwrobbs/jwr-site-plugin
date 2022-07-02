@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Returns a code block
  *
  * @return void
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
  */
 
  //? seriously, what is this?

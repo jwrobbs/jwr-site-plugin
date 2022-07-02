@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * https://developer.wordpress.org/reference/classes/wp_query/
  * 
  * This solution found originally at https://www.scratchcode.io/add-multiple-post-types-in-posts-widget-in-elementor/ 
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
  */
 
 

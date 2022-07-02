@@ -5,6 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Author: Josh Robbs
  */
 
+ /**
+ * Uses includes to attach additional solutions. 
+ * Commenting them out here is the simplest way to deactive sub-functions * 
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
+ */
+
 /*
 0. Include coding fns
 1. Create post types
@@ -22,7 +29,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 include_once(plugin_dir_path( __FILE__ )."php/cpts.php");
 	//// 1.1 Create taxonomies
 	include_once(plugin_dir_path( __FILE__ )."php/taxonomies.php");
-
 //// 2. Add shortcode
 include_once(plugin_dir_path( __FILE__ )."php/shortcode.php");
 //// 3. Add meta block for single posts

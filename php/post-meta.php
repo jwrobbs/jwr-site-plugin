@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Post types depend on template assignment
  *
  * @return string
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
  */
 function jwr_post_meta_fn($atts = array(), $content = null){
     ob_start();

@@ -1,7 +1,13 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
+/**
+ * Adds shortcode used as post footer
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
+ * 
+ * @return string
+ */
 function jwr_article_footer_fn($atts = array(), $content = null){
     ob_start();
     // start output ----------

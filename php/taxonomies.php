@@ -5,9 +5,11 @@ add_action( 'init', 'jwr_custom_taxonomies', 0 );
 /**
  * Summary
  * 
- * Add taxonomies to site
+ * Adds taxonomies to site
  * 
  * Taxonomies: Difficulty, Code topics, Review categories
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
  */
  
 function jwr_custom_taxonomies() {

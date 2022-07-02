@@ -1,10 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-/*
-1. Set average review score
-2. Display shortcode for reviews
-*/
+/**
+ * 1. Set average review score
+ * 2. Display shortcode for reviews
+ * 
+ * @author	Josh Robbs <josh@joshrobbs.com>
+ */
+
+
 
 //// 1. Set average review score
 //? also add the subcriteria
