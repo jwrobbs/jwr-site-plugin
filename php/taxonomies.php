@@ -1,6 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 add_action( 'init', 'jwr_custom_taxonomies', 0 );
+
+/**
+ * Summary
+ * 
+ * Add taxonomies to site
+ * 
+ * Taxonomies: Difficulty, Code topics, Review categories
+ */
  
 function jwr_custom_taxonomies() {
 
