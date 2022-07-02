@@ -1,6 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/**
+ * Returns a code block
+ *
+ * @return void
+ */
+
+ //? seriously, what is this?
+ 
 function jwr_get_snippet_footer(){
 	$the_code = get_field('the_code');
 	if( $the_code ){
