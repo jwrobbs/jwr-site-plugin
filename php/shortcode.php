@@ -1,5 +1,20 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+/**
+ * Summary
+ * 
+ * Adds shortcodes to the site
+ * 
+ */
+
+
+
+ /**
+  * Wraps $content in <pre> tags
+  *
+  * @return string
+  */
 function jwr_code_fn($atts = array(), $content = null){
     ob_start();
     // start output
@@ -15,6 +30,11 @@ function jwr_code_fn($atts = array(), $content = null){
 add_shortcode( 'jwr-code' , 'jwr_code_fn' );
 
 
+/**
+ * Creates list of post type archives based on $cpt_array
+ *
+ * @return string
+ */
 function jwr_home_cpt_links_fn($atts = array(), $content = null){
     ob_start();
 
