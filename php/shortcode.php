@@ -53,7 +53,7 @@ function jwr_home_cpt_links_fn($atts = array(), $content = null){
         //output
         $label = $cpt_obj->label;
         if( $label ){
-            echo "<a href='$link'>$label</a><br>";
+            echo "<a href='$link'>$label</a>";
         }
     }
 
