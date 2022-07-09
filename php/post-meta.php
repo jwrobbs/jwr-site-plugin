@@ -32,7 +32,7 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	$mod_date = get_the_modified_date('F j, Y');
 
 	$category = get_the_term_list($id,'category', "Filed under: ",', ');
-	$my_tags = get_the_term_list($id,'post_tag', "Topics: ",', ');
+	//x $my_tags = get_the_term_list($id,'post_tag', "Topics: ",', '); moved to article footer
 	
 	$difficulty = get_the_term_list($id,'difficulties', "Difficulty: ",', ');
 	$required_plugins = get_field('required_software');
@@ -72,9 +72,10 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 	if($category) {
 		echo "<div>$category</div>";
 	}
-	if($my_tags) {
-		echo "<div>$my_tags</div>";
-	}
+	// xif($my_tags) {
+	//x 	echo "<div>$my_tags</div>";
+	//x }
+	// moved to article footer
 
 	if($difficulty) {
 		echo "<hr>";
