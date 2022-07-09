@@ -1,5 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'jwr_custom_taxonomies', 0 );
 
 /**
@@ -117,3 +118,11 @@ function jwr_custom_taxonomies() {
 
  
 }
+
+add_action( 'init', 'add_tags_to_cpts_fn' );
+function add_tags_to_cpts_fn() {
+	$cpts = array('tutorial','review','code-snippet');
+	foreach($cpts as $cpt){
+		register_taxonomy_for_object_type( 'post_tag', $cpt );
+	}
+};
