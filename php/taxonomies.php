@@ -113,12 +113,9 @@ function jwr_custom_taxonomies() {
 		'rewrite' => array( 'slug' => 'review-category' ),
   	));
 
-
-
-
- 
 }
 
+//// Add post_tag to CPTS
 add_action( 'init', 'add_tags_to_cpts_fn' );
 function add_tags_to_cpts_fn() {
 	$cpts = array('tutorial','review','code-snippet');
@@ -126,3 +123,31 @@ function add_tags_to_cpts_fn() {
 		register_taxonomy_for_object_type( 'post_tag', $cpt );
 	}
 };
+
+//// Add CPTS to post_tag archive
+// do I need to do this? is this a core issue or Elementor?
+// based on code found at https://docs.pluginize.com/article/post-types-in-category-tag-archives/
+
+// fixed the archive
+//? didn't fix related items
+
+function add_cpts_to_post_tag_archive_fn( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;    
+	}
+
+	if ( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+
+		// Replace these slugs with the post types you want to include.
+		$my_post_types = array('tutorial','review','code-snippet');
+
+		$query->set(
+	  		'post_type',
+			array_merge(
+				array( 'post' ),
+				$my_post_types
+			)
+		);
+	}
+}
+add_filter( 'pre_get_posts', 'add_cpts_to_post_tag_archive_fn' );
