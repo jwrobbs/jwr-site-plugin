@@ -45,3 +45,5 @@ include_once(plugin_dir_path( __FILE__ )."php/custom-ECS-variables.php");
 include_once(plugin_dir_path( __FILE__ )."php/custom-Elementor-queries.php");
 //// 9. Support fns (fns only called by other fns)
 include_once(plugin_dir_path( __FILE__ )."php/support-fns.php");
+//// 10. Image fns
+include_once(plugin_dir_path( __FILE__ )."php/image-fns.php");
