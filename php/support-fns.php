@@ -34,9 +34,9 @@ function create_archive_card($post,$version = 1){
 
 		$fi = get_the_post_thumbnail( $post->ID, 'jwr-archive-thumbnail' );
 		if( $fi ){
-			echo "<div class='featured-image'>";
+			echo "<div class='featured-image'><a href='$link'>";
 				echo $fi;
-			echo "</div>";
+			echo "</a></div>";
 		}
 
 		// echo "<div class=''></div>";
