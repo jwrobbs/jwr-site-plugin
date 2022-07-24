@@ -175,7 +175,7 @@ function home_grid_fn($atts = array(), $content = null){
 
 
 
-    var_dump($posts);
+    // var_dump($posts);
 
     //return output
     wp_reset_postdata();

@@ -32,6 +32,13 @@ function create_archive_card($post,$version = 1){
 		$link = get_permalink($post->ID);
 		echo "<h2><a href='$link'>$post->post_title</a></h2>";
 
+		$fi = get_the_post_thumbnail( $post->ID, 'jwr-archive-thumbnail' );
+		if( $fi ){
+			echo "<div class='featured-image'>";
+				echo $fi;
+			echo "</div>";
+		}
+
 		// echo "<div class=''></div>";
 		echo "<div class='excerpt'>$post->post_excerpt</div>";
 		$date = date_create( $post->post_date );
