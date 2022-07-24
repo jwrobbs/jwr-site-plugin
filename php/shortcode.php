@@ -126,6 +126,8 @@ function home_grid_fn($atts = array(), $content = null){
             */        
         }
         echo "</div>";
+
+        // !!! need a better solution. shouldn't add this css repeatedly. should be in theme   
         ?>
             <style>
                 .home-grid {
