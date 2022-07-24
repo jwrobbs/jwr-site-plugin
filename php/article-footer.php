@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * 
  * @return string
  */
+
+ //# article footer shortcode
 function jwr_article_footer_fn($atts = array(), $content = null){
     ob_start();
     // start output ----------
@@ -32,7 +34,7 @@ function jwr_article_footer_fn($atts = array(), $content = null){
 	//display
 	
 	if($my_tags) {
-		echo "<div class='jwr-tags'>$my_tags</div>";
+		echo "<div class='jwr-tags' style='margin: 1rem 0'>$my_tags</div>";
 	}
 
     //return output ----------
