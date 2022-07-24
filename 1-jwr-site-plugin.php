@@ -43,3 +43,5 @@ include_once(plugin_dir_path( __FILE__ )."php/snippet-footer.php");
 include_once(plugin_dir_path( __FILE__ )."php/custom-ECS-variables.php");
 //// 8. Custom queries for Elementor
 include_once(plugin_dir_path( __FILE__ )."php/custom-Elementor-queries.php");
+//// 9. Support fns (fns only called by other fns)
+include_once(plugin_dir_path( __FILE__ )."php/support-fns.php");
