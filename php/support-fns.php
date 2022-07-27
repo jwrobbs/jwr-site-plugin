@@ -17,7 +17,7 @@ ToC
  * @param integer $version
  * @return string
  */
-function create_archive_card($post,$version = 1){
+function create_archive_card( $post, $version = 1 ){
 	if( !$post ){
 		return "error - no post data submitted to card fn";
 	}

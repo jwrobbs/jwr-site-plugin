@@ -129,24 +129,41 @@ function home_grid_fn($atts = array(), $content = null){
 
         // !!! need a better solution. shouldn't add this css repeatedly. should be in theme   
         ?>
-            <style>
+
+
+                /* old
                 .home-grid {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
-                    gap: 1rem;
+                    gap: 1.5rem;
                     
                 }
                 .home-card {
                     background-color: #fff;
-                    padding: .5rem;
+                    padding: 1rem;
                     flex: 0 0 300px;
                     height: 500px;
                     position: relative;
                     overflow: hidden;
+                    box-shadow: 2px 2px 5px #000;
+                }
+                .home-card .taxonomy-tag a {
+                    font-size: .9rem;
+                    line-height: 1.4;
                 }
                 .home-card h2 {
-                    font-size: 1.4rem;
+                    font-size: 1.3rem;
+                    padding: .5rem 0;
+                    font-weight: 700;
+                    margin: 0;
+                } 
+                .home-card .featured-image,  
+                .home-card .featured-image a {
+                    line-height: 0;
+                }
+                .home-card .excerpt {
+                    font-size: .9rem;
                 }
                 .home-card-footer {
                     position: absolute;
@@ -154,7 +171,7 @@ function home_grid_fn($atts = array(), $content = null){
                     left: 0;
                     right: 0;
                     height: auto;
-                    padding: .5rem;
+                    padding: 1rem;
                     background-color: #fff;
                     display: flex;
                     justify-content: space-between;
@@ -164,18 +181,12 @@ function home_grid_fn($atts = array(), $content = null){
                 }
                 .home-card-footer > div {
                     font-size: .9rem;
-                }
-
-            </style>
-
-
+                }*/
 
         <?php
     }else{
         echo "Something is wrong: no posts.";
     }
-
-
 
     // var_dump($posts);
 
