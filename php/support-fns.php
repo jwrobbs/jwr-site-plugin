@@ -24,7 +24,7 @@ function create_archive_card( $post, $version = 1 ){
 	if( 1 == $version ){
 		$link = get_permalink($post->ID);
 		$post_type = $post->post_type;
-		$post_type = strtoupper($post_type);
+		
 		$title = $post->post_title;
 		$excerpt = $post->post_excerpt;
 		
@@ -34,7 +34,8 @@ function create_archive_card( $post, $version = 1 ){
 			$excerpt_2 = $excerpt;
 		}
 
-		echo "<div class='archive-card'>";
+		echo "<div class='archive-card type-$post_type'>";
+		$post_type = strtoupper($post_type);// want it UC for display but not for class name
 
 		//container
 			echo "<div class='styled-excerpt-container'><a href='$link'>";
@@ -51,7 +52,10 @@ function create_archive_card( $post, $version = 1 ){
 			echo "</div>";	
 
 			echo "<div class='byline-container'>";
-				echo "<div class='byline'>$excerpt</div>"; // excerpt
+				echo "<div class='byline'>";
+					$date = date_create( $post->post_date );
+					echo "<div class='date'>" . date_format($date, 'M j, Y') . "</div>";
+				echo "</div>";
 			echo "</div>";
 
 
