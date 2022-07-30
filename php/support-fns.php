@@ -29,12 +29,12 @@ function create_archive_card( $post, $version = 1 ){
 		$excerpt = $post->post_excerpt;
 		
 		if( $excerpt == "" || $excerpt == null){
-			$excertp_2 = $title;
+			$excerpt_2 = $title;
 		}else{
-			$excertp_2 = $excerpt;
+			$excerpt_2 = $excerpt;
 		}
 
-		echo "<div class='home-card'>";
+		echo "<div class='archive-card'>";
 
 		//container
 			echo "<div class='styled-excerpt-container'><a href='$link'>";
