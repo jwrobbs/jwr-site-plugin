@@ -96,94 +96,15 @@ function home_grid_fn($atts = array(), $content = null){
     ob_start();
 
     if( $posts ){
-        echo "<div class='home-grid'>";
+        echo "<div class='archive-grid'>";
         foreach($posts as $post){
 
             $card = create_archive_card($post);
             echo $card;
-
-            /*
-            echo "<div class='home-card'>";
-            $taxonomy = get_tax_tag($post->ID); 
-            // echo "taxonomy tag";
-            if( $taxonomy ){
-                // echo "<div class='taxonomy-tag'><a href='$taxonmy['url']>$taxonomy['name']</a></div>";
-                echo "<div class='taxonomy-tag'>$taxonomy</div>";
-            }
-            $link = get_permalink($post->ID);
-            echo "<h2><a href='$link'>$post->post_title</a></h2>";
-
-            // echo "<div class=''></div>";
-            echo "<div class='excerpt'>$post->post_excerpt</div>";
-            $date = date_create( $post->post_date );
-            echo "<div class='home-card-footer'>";
-            echo "<div class='date'>" . date_format($date, 'M j, Y') . "</div>";
-            echo "<div class='read-more'><a href='$link'>Keep reading >></a></div>";
-
-
-            echo "</div>";
-            echo "</div>";    
-            */        
+       
         }
         echo "</div>";
 
-        // !!! need a better solution. shouldn't add this css repeatedly. should be in theme   
-        ?>
-
-
-                /* old
-                .home-grid {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    gap: 1.5rem;
-                    
-                }
-                .home-card {
-                    background-color: #fff;
-                    padding: 1rem;
-                    flex: 0 0 300px;
-                    height: 500px;
-                    position: relative;
-                    overflow: hidden;
-                    box-shadow: 2px 2px 5px #000;
-                }
-                .home-card .taxonomy-tag a {
-                    font-size: .9rem;
-                    line-height: 1.4;
-                }
-                .home-card h2 {
-                    font-size: 1.3rem;
-                    padding: .5rem 0;
-                    font-weight: 700;
-                    margin: 0;
-                } 
-                .home-card .featured-image,  
-                .home-card .featured-image a {
-                    line-height: 0;
-                }
-                .home-card .excerpt {
-                    font-size: .9rem;
-                }
-                .home-card-footer {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: auto;
-                    padding: 1rem;
-                    background-color: #fff;
-                    display: flex;
-                    justify-content: space-between;
-                    align-content: center;
-                    line-height: 1.4em;
-                    border-top: 1px solid #002244;
-                }
-                .home-card-footer > div {
-                    font-size: .9rem;
-                }*/
-
-        <?php
     }else{
         echo "Something is wrong: no posts.";
     }
