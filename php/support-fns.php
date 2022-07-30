@@ -38,8 +38,8 @@ function create_archive_card( $post, $version = 1 ){
 
 		//container
 			echo "<div class='styled-excerpt-container'><a href='$link'>";
-				echo "<div class='styled-excerpt'>$excerpt</div>"; // excerpt
-			echo "</a></div>";_2
+				echo "<div class='styled-excerpt'>$excerpt_2</div>"; // excerpt
+			echo "</a></div>";
 		
 		//title
 			echo "<div class='title'>";
