@@ -66,7 +66,8 @@ function jwr_post_meta_fn($atts = array(), $content = null){
 		echo "<br>updated: $mod_date";
 	}
 
-	if( $category || $my_tags ){
+	// if( $category || $my_tags ){
+		if( $category ){
 		echo "<hr>";
 	}
 	if($category) {
