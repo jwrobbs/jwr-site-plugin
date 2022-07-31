@@ -47,3 +47,5 @@ include_once(plugin_dir_path( __FILE__ )."php/custom-Elementor-queries.php");
 include_once(plugin_dir_path( __FILE__ )."php/support-fns.php");
 //// 10. Image fns
 include_once(plugin_dir_path( __FILE__ )."php/image-fns.php");
+//# 11. Related "posts" 
+include_once(plugin_dir_path( __FILE__ )."php/related-posts-fns.php");
