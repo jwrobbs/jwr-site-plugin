@@ -1,18 +1,32 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function jwr_related_posts_fn($count = 4){
+function jwr_related_posts_fn( $args ){
+
+	$defaults = array(
+		'count' => 4,
+	);
+	$args = wp_parse_args( $args, $defaults );
+	$count = $args['count'];
+	if( !is_int($count) ){ // if count isn't an interger
+		$count = 4;
+	}
+	/* I don't think I need this. Will leave to test once the site is more populated
+	if( $count < 6 ){ //if count too low, use 10 
+		// do I still need this malarkey?
+		// YES, the initial taxonomy term query cannot separate published posts
+		// max query provides padding so that... wait I might be wrong
+		$query_max = 10;
+	}else{
+		$query*/
+
+
 	// get data
 	global $wpdb;
 	$post_id = get_the_ID();
 	$post_tag_objects = get_the_terms( $post_id, 'post_tag' ); // term objs of this post's tags
-	// if( $count < 6 || !is_int($count)){ //if count too low or isn't an interger, use 10
-	// 	$query_max = 10;
-	// }else{
-	// 	$query_max = $count * 2;
-	// }
-
-	$post_tags = array(); // term ids of this posts's tags
+	
+	// $post_tags = array(); // term ids of this posts's tags - I don't think this is used any longer
 	
 	$term_count = 0;
 	$term_string = "("; // term_string is basically a comma separated version of $post_tags for use in a custom query
@@ -31,7 +45,6 @@ function jwr_related_posts_fn($count = 4){
 	
 	$query = "SELECT * FROM `$wpdb->term_relationships` WHERE `term_taxonomy_id` IN $term_string";
 	// this query only uses values querried for and generated in this fn
-	// $query2 = 'SELECT * FROM `wp_term_relationships` WHERE `term_taxonomy_id` IN ("22", "21", "20")';
 
 	$results = $wpdb->get_results( $query );
 	$tally = array(); 
@@ -44,78 +57,56 @@ function jwr_related_posts_fn($count = 4){
 		if( $this_post_id == $post_id ){
 			continue; //skip if is current post
 		}
-		$tally[$this_post_id] = $tally[$this_post_id] + 1;
+		$tally[$this_post_id] = $tally[$this_post_id] + 1; // increment on match
 		
 	}
 
 	//order array
 	arsort($tally);
 	$related_items = array_keys($tally);
+
+	// get related items
+
+	$related_query_results = new WP_Query( array( 
+		'post__in' 			=> $related_items, 
+		'post_status'		=> 'publish',
+		'post_type'			=> 'any', // this won't be an issue because query is limited by post_ids
+		'posts_per_page'	=>	$query_max,
+		) 
+	);
+	$related_loop = $related_query_results->posts;
+
 	ob_start();
 	// start output
 	echo "<div class='related-items'>";
-	echo "<h2>Related posts</h3>";
-	// var_dump($tally);
-	var_dump($related_items);
+	echo "<h2>Related articles</h3>";
 
-	$related_loop = new WP_Query( array( 
-		'post__in' 		=> $related_items, 
-		'post_status'	=> 'publish',
-		'post_type'		=> 'any'
+	// var_dump($related_loop);
 
-		) 
-	);
-
-
-
-
-	// $args = array(
-	// 	// 'posts_per_page'	=> -1,
-	// 	'post__in' 			=> $related_items, 
-	// 	'post_status'		=> 'publish',
-	// );
-	// $posts = get_posts($args); // array of post objects
-
-
-
-
-
-	echo "<pre>";
-	var_dump($related_loop->posts);
-	echo "</pre>";
-	/* 
-	while I could do a single large query to get every post in the list,
-	how would I ensure that I'm getting the top posts?
-	*/
-	// $related_loop = new WP_Query( array( 
-	// 	'post_type' 	=> 'page', 
-	// 	'post__in' 		=> $related_items, 
-	// 	'post_status'	=> 'publish',
-
-	// 	) 
-	// );
-
-	/*
-	$related_count = 0;
 	echo "<ul>";
-	foreach( $related_items as $related_item ){
-		$this_item = get_post( $related_item, 'OBJECT' );
-		if( $this_item->post_status != 'publish' ){
-			continue; // skip if it isn't published
-		}
-		$this_id = $this_item->ID;
-		$this_title = $this_item->post_title;
-		$this_link = get_permalink($this_id);
-		$this_type = $this_item->post_type;
-		
-		echo "<li><a href='$this_link'><span>$this_type: </span>$this_title</a></li>";
-	}
-	echo "</ul></div>";
-*/
+	$this_count = 0;
 
-	// var_dump($tally);
-	// var_dump($related_items);
-	// var_dump($query2);
+	// create simpler list of values
+	$column_ids = array_column( $related_loop, 'ID' );
+	// var_dump($column_ids);
+	foreach( $related_items as $related_item ){	
+		if( $this_count >= $count ){
+			break;
+		}
+
+		$this_key = array_search( $related_item, $column_ids );
+		$this_post = $related_loop[$this_key];
+
+		$this_post_type = $this_post->post_type;
+		$this_title = $this_post->post_title;
+		$this_link = get_the_permalink($this_post->ID);
+		echo "<li><a href='$this_link'><span>$this_post_type: </span>$this_title</a></li>";
+
+		$this_count++;
+	}
+
+	echo "</ul>";
+
 	// var_dump($tally);
 	//return output
 	wp_reset_postdata();
